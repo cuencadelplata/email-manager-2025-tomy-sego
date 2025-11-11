@@ -11,14 +11,17 @@ public class CorreoTest {
 
     @Test
     public void SePuedeCrearUnCorreo(){
-        String remitente = "romerostachlautaro@gmail.com";
-        List<String> destinatarios = List.of("agustinquetglas19@gmail.com", "juantomasegovia05@gmail.com");
+        Contacto remitente = new Contacto("sanfer", "romerostachlautaro@gmail.com");
+        Contacto destinatario1 = new Contacto("agustin", "agustinquetglas19@gmail.com");
+        Contacto destinatario2 = new Contacto("juanto", "juantomasegovia05@gmail.com");
+        List<Contacto> destinatarios = List.of(destinatario1, destinatario2);
 
         Correo c = new Correo("Prueba Correo", "Probando que se puede crear un correo",remitente, destinatarios);
 
         assertEquals("Prueba Correo", c.getAsunto());
         assertEquals("Probando que se puede crear un correo", c.getContenido());
-        assertEquals("romerostachlautaro@gmail.com", c.getRemitente());
-        assertTrue(c.getDestinatarios().contains("agustinquetglas19@gmail.com"));
+        assertEquals("romerostachlautaro@gmail.com", c.getRemitente().getEmail());
+        assertTrue(c.getDestinatarios().contains(destinatario1));
+        assertTrue(c.getDestinatarios().contains(destinatario1));
     }
 }
